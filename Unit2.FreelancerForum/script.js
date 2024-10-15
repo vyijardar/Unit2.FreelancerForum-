@@ -1,26 +1,30 @@
-const freelancers = [
-  { name: "Dr. Slice", price: 25, occupation: "gardener" },
-  { name: "Dr. Pressure", price: 51, occupation: "programmer" },
-  { name: "Prof. Possibility", price: 43, occupation: "teacher" },
-  // { name: "Prof. Prism", price: 81, occupation: "teacher" },
-  // { name: "Dr. Impulse", price: 43, occupation: "teacher" },
-  // { name: "Prof. Spark", price: 76, occupation: "programmer" },
-  // { name: "Dr. Wire", price: 47, occupation: "teacher" },
-  // { name: "Prof. Goose", price: 72, occupation: "driver" }
-];
 
-const names = ["Dr. Slice", "Dr. Pressure", "Prof. Possibility","Prof. Prism"];
-const prices = [25, 51, 43, 81];
-const occupations = ["gardener", "programmer", "teacher","driver"];
+//Initiating an array of possible names and an array of possible occupations.
+const names = ["Dr. Slice", "Dr. Pressure", "Prof. Possibility"];
+const prices = [25, 51, 43];
+const occupations = ["Gardener","programmer","teacher"];
 const maxFreelancers = 8;
 
+//Initiating an array of  two freelancers with names, occupations, and starting prices.
+const freelancers = [
+  { name: "Alice",
+    price: 30, 
+    occupation: "Writer"
+   },
+  { 
+    name: "Bob", 
+    price: 50, 
+    occupation: "teacher"
+   },
+];
 
-
+// `setInterval` will call `addFreelancer` every 1000 milliseconds (1 second)
 const addFreeIntervalId = setInterval(addFreelancer, 1000);
-console.log("calling interval");
-// addFreelancer();
 render();
-
+/*
+ * Update the DOM to reflect the current state.
+ * The term "render" is often used to describe this process.
+ */
 function render() {
   //Render the names
   const namesList = document.querySelector(".names");
@@ -56,10 +60,13 @@ function render() {
   occupationList.replaceChildren(...occupationElements);
   
 }
-// Adds a random addFreelancer
+
+//  * Add a random freelancer to the `freelancers` array
+
 function addFreelancer() {
+
+ // Stop adding shapes if we've reached the maximum number of shapes
   if (freelancers.length >= maxFreelancers) {
-    // tell it stop
     clearInterval(addFreeIntervalId);
     return;
   }
@@ -70,7 +77,7 @@ function addFreelancer() {
   freelancers.push({name, price, occupation});
   render();
 
-  // Update average price
+  //Calculates the average starting price of the freelancers array.
   
   var arr = Object.values(freelancers);
   console.log(arr);
